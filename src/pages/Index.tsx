@@ -7,6 +7,7 @@ import Skills from '@/components/Skills';
 import Projects from '@/components/Projects';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import Blog from '@/components/Blog'
 
 const Index = () => {
   // Handle scroll animations
@@ -44,6 +45,7 @@ const Index = () => {
       <About />
       <Skills />
       <Projects />
+        <Blog/>
       <Contact />
       <Footer />
     </main>

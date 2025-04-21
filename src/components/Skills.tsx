@@ -51,7 +51,7 @@ const Skills = () => {
     },
     {
       title: "Tools & Platforms",
-      skills: ["Git", "GitHub", "AWS", "Vercel", "Docker","Kubernates","Apache Kafka","Redis","Swagger","Terraform" , "Prometheus" , "Grafana","Loki"]
+      skills: ["Git", "GitHub", "AWS", "Vercel", "Docker","Kubernates","Apache Kafka","Redis","Swagger","Terraform" , "Prometheus" , "Grafana","Loki","DIGIT"]
     },
     {
       title: "Blockchain Technology",
