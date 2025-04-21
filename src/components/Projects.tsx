@@ -134,6 +134,15 @@ const Projects = () => {
       category: "Frontend"
     },
     {
+      title: "Portfolio (Currently Viewing)",
+      description: "A responsive contact form integrated with EmailJS to send emails directly from the frontend.",
+      tags: ["React", "TypeScript", "TailwindCSS", "EmailJS"],
+      "links": {
+        "github": "https://github.com/isid555/Siddharth_Portfolio_2"
+      },
+      "category": "Frontend"
+    },
+    {
       title: "Code Craft - Online IDE",
       description: "A multi-language online IDE with real-time code execution using Piston API and Convex.dev backend.",
       tags: ["Next.js", "TypeScript", "Tailwind CSS", "Piston API", "Convex.dev"],

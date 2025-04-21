@@ -1,70 +1,101 @@
+import React from 'react';
+import { motion } from 'framer-motion';
 
-import React, { useEffect, useRef } from 'react';
-import { ArrowDown } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+const images = [
+    {
+        src: './left_face.jpg',
+        title: 'Command Line Craftsman',
+        description: 'Passionate about Open Source, Freelancing, and sharpening skills through Competitive Programming.',
+        position: 'left',
+        widthRatio: 31.47, // %
+    },
+    {
+        src: './middle_face.jpg',
+        title: 'Decentralized Visionary',
+        description: 'Building on Solana & Ethereum, hunting bounties, and shaping the decentralized frontier.',
+        position: 'center',
+        widthRatio: 39.92,
+    },
+    {
+        src: './right_face.jpg',
+        title: 'Web2 Native, AI Ready',
+        description: 'Crafting Web2 & AI-powered apps, mastering DevOps, and merging logic with creativity.',
+        position: 'right',
+        widthRatio: 28.61,
+    },
+];
+
+
 
 const Hero = () => {
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const title = titleRef.current;
-    const subtitle = subtitleRef.current;
-    const cta = ctaRef.current;
-
-    if (title) title.classList.add('animate-fade-in');
-    
-    setTimeout(() => {
-      if (subtitle) subtitle.classList.add('animate-fade-in');
-    }, 300);
-    
-    setTimeout(() => {
-      if (cta) cta.classList.add('animate-fade-in');
-    }, 600);
-  }, []);
-
-  const scrollToAbout = () => {
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  return (
-    <section id="home" className="flex flex-col items-center justify-center relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_rgba(192,192,192,0.1)_0%,_transparent_70%)]"></div>
-      
-      <div className="max-w-4xl mx-auto text-center z-10 px-4">
-        <h1 
-          ref={titleRef}
-          className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 opacity-0 tracking-tight"
+    return (
+        <motion.section
+            id="hero"
+            className="w-full min-h-screen flex items-center justify-center bg-black relative"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5 }}
         >
-          <span className="gradient-heading">Creative Developer</span>
-          <span className="silver-shine"> & Designer</span>
-        </h1>
-        
-        <p 
-          ref={subtitleRef}
-          className="text-lg md:text-xl text-gray-300 mb-8 opacity-0"
-        >
-          Building modern, innovative digital experiences with clean code and creative design.
-        </p>
-        
-        <div ref={ctaRef} className="opacity-0 mt-4">
-          <Button 
-            onClick={scrollToAbout}
-            className="bg-transparent hover:bg-silver/10 text-silver hover:text-white border border-silver rounded-full px-6 py-6 group relative"
-          >
-            <ArrowDown className="h-5 w-5 animate-bounce" />
-            <span className="sr-only">Scroll Down</span>
-          </Button>
-        </div>
-      </div>
-      
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 w-[200px] h-[1px] bg-gradient-to-r from-transparent via-silver/30 to-transparent"></div>
-    </section>
-  );
+            {/* Code Red Texts - visible only on large screens */}
+            <div className="lg:block hidden">
+                <motion.div
+                    className="absolute left-0 top-0 h-full flex items-center justify-center text-5xl opacity-60 transform -translate-x-1/2 lg:-translate-x-0 lg:left-10 tracking-wider uppercase"
+                    style={{ color: '#b61200', fontFamily: '"Roboto Serif", serif', fontWeight: 800 }}
+                    animate={{ x: [-10, 0], opacity: [0, 1] }}
+                    transition={{ duration: 2, delay: 1.5 }}
+                >
+                    <span>code</span>
+                </motion.div>
+
+                <motion.div
+                    className="absolute right-0 top-0 h-full flex items-center justify-center text-5xl opacity-60 transform translate-x-1/2 lg:translate-x-0 lg:right-10 tracking-wider uppercase"
+                    style={{ color: '#b61200', fontFamily: '"Roboto Serif", serif', fontWeight: 800 }}
+                    animate={{ x: [10, 0], opacity: [0, 1] }}
+                    transition={{ duration: 2, delay: 2 }}
+                >
+                    <span>red</span>
+                </motion.div>
+            </div>
+
+            {/* Collage Images */}
+            <div className="w-[90vw] max-w-[734px] aspect-[734/870] flex overflow-hidden">
+                {images.map((img, idx) => (
+                    <motion.div
+                        key={idx}
+                        className="relative group overflow-hidden"
+                        style={{
+                            width: `${img.widthRatio}%`,
+                            height: '100%',
+                            flexShrink: 0,
+                        }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1.5, delay: idx * 1.1 }}
+                    >
+                        <img
+                            src={img.src}
+                            alt={`${img.title} - ${img.description}`}
+                            loading="lazy"
+                            className={`
+                                w-full h-full object-none grayscale group-hover:grayscale-0 transition duration-500 ease-in-out
+                                ${img.position === 'left'
+                                ? 'object-left'
+                                : img.position === 'right'
+                                    ? 'object-right'
+                                    : 'object-center'}
+                                group-hover:scale-105 
+                                scale-[0.9] sm:scale-100
+                            `}
+                        />
+                        <div className="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-center items-center text-center p-4">
+                            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2">{img.title}</h2>
+                            <p className="text-sm sm:text-base text-gray-300">{img.description}</p>
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+        </motion.section>
+    );
 };
 
 export default Hero;

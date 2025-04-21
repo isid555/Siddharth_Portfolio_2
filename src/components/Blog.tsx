@@ -75,7 +75,7 @@ const Blog = () => {
     ];
 
     return (
-        <section id="blog" ref={sectionRef} className="bg-off-black overflow-hidden">
+        <section id="events" ref={sectionRef} className="bg-off-black overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-off-black to-transparent"></div>
             <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-off-black to-transparent"></div>
 
