@@ -1,0 +1,101 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 0 0% 14.5%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14.5%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14.5%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.5%;
+    --input: 0 0% 14.5%;
+    --ring: 0 0% 83.9%;
+
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-off-black text-foreground antialiased;
+    overflow-x: hidden;
+  }
+
+  section {
+    @apply min-h-screen py-20 px-6 relative;
+  }
+}
+
+@layer components {
+  .silver-shine {
+    background: linear-gradient(90deg, #9F9EA1, #C0C0C0, #F8F8F8, #C0C0C0, #9F9EA1);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    @apply text-transparent animate-shimmer;
+  }
+
+  .gradient-heading {
+    background: linear-gradient(to bottom, #FFFFFF 0%, #9F9EA1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    @apply text-transparent;
+  }
+
+  .animate-on-scroll {
+    @apply opacity-0;
+  }
+
+  .animate-on-scroll.visible {
+    @apply animate-fade-in-up;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-[0_0_15px_rgba(192,192,192,0.3)] hover:-translate-y-1;
+  }
+
+  .nav-link {
+    @apply relative px-2 py-1 text-gray-300 hover:text-white transition-colors after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-silver after:left-1/2 after:-translate-x-1/2 after:bottom-0 after:transition-all hover:after:w-full;
+  }
+
+  .silver-border {
+    @apply border border-silver/20 hover:border-silver/40 transition-colors;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold mb-8 tracking-tight;
+  }
+}
+
+#root {
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
