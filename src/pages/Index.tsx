@@ -18,7 +18,7 @@ const Index = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setTimerFinished(true);
-        }, 12000);
+        }, 1200);
 
         return () => clearTimeout(timer);
     }, []);

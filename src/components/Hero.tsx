@@ -25,7 +25,12 @@ const images = [
     },
 ];
 
-
+const customDelays = [0, 1.1, 2.2];
+const delayMap = {
+    0: customDelays[1],
+    1: customDelays[2],
+    2: customDelays[0],
+};
 
 const Hero = () => {
     return (
@@ -60,6 +65,7 @@ const Hero = () => {
             {/* Collage Images */}
             <div className="w-[90vw] max-w-[734px] aspect-[734/870] flex overflow-hidden">
                 {images.map((img, idx) => (
+
                     <motion.div
                         key={idx}
                         className="relative group overflow-hidden"
@@ -70,7 +76,7 @@ const Hero = () => {
                         }}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1.5, delay: idx * 1.1 }}
+                        transition={{ duration: 1.5, delay: delayMap[idx] }}
                     >
                         <img
                             src={img.src}
