@@ -124,7 +124,7 @@ const Index: React.FC = () => {
                 <div className="fixed z-[999] top-[90px] right-4 md:top-[90px] md:right-6">
                     {/* Timer: Below Navbar */}
                     <div className={`bg-white text-red-800 border-2 border-white rounded-full shadow-lg px-5 py-2 text-lg md:text-2xl font-semibold opacity-30 transition duration-300 ease-in-out font-sans caret-white`}>
-                        {countdown}:00
+                        00:{countdown}
                     </div>
                 </div>
             )}

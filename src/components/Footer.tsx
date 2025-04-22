@@ -24,7 +24,7 @@ const Footer = () => {
         </div>
         
         <p className="text-gray-400 text-sm">
-        Built on April {currentYear}
+        This portfolio is built for Educational Purposes only ️
         </p>
       </div>
     </footer>
