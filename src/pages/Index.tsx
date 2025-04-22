@@ -107,7 +107,7 @@ const Index: React.FC = () => {
 
             {/* Main content */}
             {!showInitialOverlay && (
-                <Suspense fallback={<div className="text-white text-center mt-10">Loading...</div>}>
+                <Suspense fallback={<div className="text-white text-center mt-10"> . . . </div>}>
                     <Navbar />
                     <Hero />
                     <About />
