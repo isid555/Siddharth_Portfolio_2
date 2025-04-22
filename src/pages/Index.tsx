@@ -9,12 +9,12 @@ const Contact = lazy(() => import('@/components/Contact'));
 const Footer = lazy(() => import('@/components/Footer'));
 const Blog = lazy(() => import('@/components/Blog'));
 
-const Index = () => {
-    const [showInitialOverlay, setShowInitialOverlay] = useState(true);
-    const [isMusicPlaying, setIsMusicPlaying] = useState(false);
-    const [isSessionOver, setIsSessionOver] = useState(false);
-    const [timerFinished, setTimerFinished] = useState(false);
-    const [countdown, setCountdown] = useState(65);
+const Index: React.FC = () => {
+    const [showInitialOverlay, setShowInitialOverlay] = useState<boolean>(true);
+    const [isMusicPlaying, setIsMusicPlaying] = useState<boolean>(false);
+    const [isSessionOver, setIsSessionOver] = useState<boolean>(false);
+    const [timerFinished, setTimerFinished] = useState<boolean>(false);
+    const [countdown, setCountdown] = useState<number>(65);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -26,7 +26,7 @@ const Index = () => {
     const startAudioOnInteraction = () => {
         const audio = new Audio('./WhatsApp_Weddingparty_cut.mp3');
         audio.loop = false;
-        audio.play().catch(err => console.error('Autoplay failed:', err));
+        audio.play().catch((err) => console.error('Autoplay failed:', err));
         setIsMusicPlaying(true);
         setShowInitialOverlay(false);
 
@@ -105,16 +105,6 @@ const Index = () => {
                 </div>
             )}
 
-            {/* Countdown timer display - show only after 3 seconds passed (countdown <= 62) */}
-            {isMusicPlaying && !isSessionOver && countdown <= 61 && (
-                <div className="fixed top-4 right-4 md:top-6 md:right-6 z-[999]">
-                    <div className="bg-white text-red-800 border-2 border-white rounded-full shadow-lg px-5 py-2 text-lg md:text-2xl font-semibold opacity-30 transition duration-300 ease-in-out font-sans caret-white">
-                        {countdown}:00
-                    </div>
-                </div>
-            )}
-
-
             {/* Main content */}
             {!showInitialOverlay && (
                 <Suspense fallback={<div className="text-white text-center mt-10">Loading...</div>}>
@@ -127,6 +117,16 @@ const Index = () => {
                     <Contact />
                     <Footer />
                 </Suspense>
+            )}
+
+            {/* Countdown timer display - show only after 3 seconds passed (countdown <= 62) */}
+            {isMusicPlaying && !isSessionOver && countdown <= 61 && (
+                <div className="fixed z-[999] top-[90px] right-4 md:top-[90px] md:right-6">
+                    {/* Timer: Below Navbar */}
+                    <div className={`bg-white text-red-800 border-2 border-white rounded-full shadow-lg px-5 py-2 text-lg md:text-2xl font-semibold opacity-30 transition duration-300 ease-in-out font-sans caret-white`}>
+                        {countdown}:00
+                    </div>
+                </div>
             )}
 
             {/* Invisible full-screen trigger */}

@@ -35,7 +35,7 @@ const delayMap = {
 const Hero = () => {
     return (
         <motion.section
-            id="hero"
+            id="home"
             className="w-full min-h-screen flex items-center justify-center bg-black relative"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
